@@ -61,22 +61,43 @@
   }
 
   class StudentDAO {
-    public Student $student;
-      // $student =array(); 
-    public $grade;
+    private $studentList;
 
-    public function __construct(Student $student, $grade)
-    {
-      $this->student=$student;
-      $this->grade=$grade;
+    public function __construct() {
+        $this->studentList = array();
     }
-    // public function read(){
 
-    // }
+    public function create($student) {
+        array_push($this->studentList, $student);
+    }
 
+    public function read($id) {
+        foreach ($this->studentList as $student) {
+            if ($student->getId() == $id) {
+                return $student;
+            }
+        }
+        return null;
+    }
 
-  
-  }
+    public function update($student) {
+        $key = array_search($student, $this->studentList);
+        if ($key !== false) {
+            $this->studentList[$key] = $student;
+        }
+    }
+
+    public function delete($student) {
+        $key = array_search($student, $this->studentList);
+        if ($key !== false) {
+            unset($this->studentList[$key]);
+        }
+    }
+
+    public function getAll() {
+        return $this->studentList;
+    }
+}
 
   
 ?>
