@@ -21,14 +21,14 @@
     public $id;
     public $name;
     public $age;
-    //public $grade;
+    private $grade;
     
-    public function __construct($id,$name,$age)
+    public function __construct($id,$name,$age,$grade)
     {
       $this->id=$id;
       $this->name=$name;
       $this->age=$age;
-      //$this->grade=$grade;
+      $this->grade = $grade;
     }
 
     public function getId(){
@@ -40,9 +40,9 @@
     public function getAge(){
       return $this->age;
     }
-    // public function getGrade(){
-    //   return $this->grade;
-    // }
+    public function getGrade(){
+      return $this->grade;
+    }
     
     public function setId($id){
       $this->id=$id;
@@ -53,51 +53,51 @@
     public function setAge($age){
       $this->age=$age;
     }
-    // public function setGrade($grade){
-    //   $this->grade=$grade;
-    // }
+    public function setGrade($grade){
+      $this->grade=$grade;
+    }
     
     
   }
 
-  class StudentDAO {
-    private $studentList;
+//   class StudentDAO {
+//     private $students;
 
-    public function __construct() {
-        $this->studentList = array();
-    }
+//     public function __construct() {
+//         $this->students = array();
+//     }
 
-    public function create($student) {
-        array_push($this->studentList, $student);
-    }
+//     public function create($student) {
+//         array_push($this->students, $student);
+//     }
 
-    public function read($id) {
-        foreach ($this->studentList as $student) {
-            if ($student->getId() == $id) {
-                return $student;
-            }
-        }
-        return null;
-    }
+//     public function read($id) {
+//         foreach ($this->students as $student) {
+//             if ($student->getId() == $id) {
+//                 return $student;
+//             }
+//         }
+//         return null;
+//     }
 
-    public function update($student) {
-        $key = array_search($student, $this->studentList);
-        if ($key !== false) {
-            $this->studentList[$key] = $student;
-        }
-    }
+//     public function update($student) {
+//         $key = array_search($student, $this->students);
+//         if ($key !== false) {
+//             $this->students[$key] = $student;
+//         }
+//     }
 
-    public function delete($student) {
-        $key = array_search($student, $this->studentList);
-        if ($key !== false) {
-            unset($this->studentList[$key]);
-        }
-    }
+//     public function delete($student) {
+//         $key = array_search($student, $this->students);
+//         if ($key !== false) {
+//             unset($this->students[$key]);
+//         }
+//     }
 
-    public function getAll() {
-        return $this->studentList;
-    }
-}
+//     public function getAll() {
+//         return $this->students;
+//     }
+// }
 
   
 ?>
